@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Age</th>
+    <th>Status</th>
     <th>Parent</th>
     <th>Impact</th>
     <th></th>
@@ -15,6 +16,7 @@
   <tr>
     <td><%= person.name %></td>
     <td><%= person.age %></td>
+    <td><%= person.status %></td>
     <td><%= person.parent.name unless person.parent == nil %></td>
     <td><%= person.descendants.count unless person.descendants == nil %></td>
     <td><%= link_to 'Show', person %></td>

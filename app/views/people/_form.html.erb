@@ -1,6 +1,7 @@
 <%= simple_form_for @person do |f| %>
 	<%= f.input :name %>
 	<%= f.input :age, :collection => 18..60, :prompt => "Select your age" %>
+	<%= f.input :status, :collection => ['subscribed', 'unsubscribed'], :include_blank => false %>
 	<%= f.input :parent_id, :collection => Person.all %>
   <%= f.button :submit %>
 <% end %>
