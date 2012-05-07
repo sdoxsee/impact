@@ -9,6 +9,9 @@ gem 'sqlite3'
 gem 'awesome_nested_set'
 gem 'simple_form'
 
+group :test do
+  gem 'factory_girl_rails'
+end
 group :development, :test do
   gem 'rspec-rails'
 end
