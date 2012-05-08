@@ -11,5 +11,9 @@ class Person < ActiveRecord::Base
       subscribed << d if d.status == 'subscribed'        
     end
     subscribed
-  end    
+  end
+  
+  def position
+    1
+  end
 end

@@ -5,11 +5,6 @@ describe Person do
     Person.new.should be_an_instance_of(Person)
   end
   
-  describe "descendants" do
-    it "should have count 0 for first" do
-      person = FactoryGirl.create(:person)
-      person.descendants.count.should eql(0)
-    end
     before(:each) do
 # stephen (s)        jenn ( )
 # \                  \
@@ -19,16 +14,23 @@ describe Person do
 # \
 # alex (s)
       @stephen = FactoryGirl.create(:person, :status => 'subscribed')
-      @lois = FactoryGirl.create(:person, :parent_id => @stephen.id)
-      @karen = FactoryGirl.create(:person, :parent_id => @lois.id, :status => 'subscribed')
-      @alex = FactoryGirl.create(:person, :parent_id => @karen.id, :status => 'subscribed')
-      @harry = FactoryGirl.create(:person, :parent_id => @lois.id)
+      @lois = FactoryGirl.create(:person)
+      @lois.move_to_child_of(@stephen)
+      @karen = FactoryGirl.create(:person, :status => 'subscribed')
+      @karen.move_to_child_of(@lois)
+      @alex = FactoryGirl.create(:person, :status => 'subscribed')
+      @alex.move_to_child_of(@karen)
+      @harry = FactoryGirl.create(:person)
+      @harry.move_to_child_of(@lois)
       @jenn = FactoryGirl.create(:person)
-      @joann = FactoryGirl.create(:person, :parent_id => @jenn.id, :status => 'subscribed')
-      @jenn.save!
-      @stephen.save!
-      @lois.save!
-      @karen.save!
+      @joann = FactoryGirl.create(:person, :status => 'subscribed')
+      @joann.move_to_child_of(@jenn)
+      @stephen.reload
+  end
+  describe "descendants" do
+    it "should have count 0 for first" do
+      person = FactoryGirl.create(:person)
+      person.descendants.count.should eql(0)
     end
     it "should have proper descendants count for a tree" do
       @stephen.descendants.count.should eql(4)
@@ -42,6 +44,20 @@ describe Person do
     it "should have 0 subscribed descendants" do
       @stephen.subscribed_descendants.count.should eql(2)
       @jenn.subscribed_descendants.count.should eql(1)
+    end
+  end
+  describe "position" do
+    it "should have stephen as first" do
+      @stephen.position.should eql(1)
+    end
+    pending "should have lois as second" do
+      
+    end
+    pending "should have karen as tied for third with jenn" do
+      
+    end
+    pending "should have alex, harry, and joann as tied for fifth" do
+      
     end
   end
 end
