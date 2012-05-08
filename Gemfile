@@ -14,6 +14,10 @@ group :test do
 end
 group :development, :test do
   gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'rb-inotify'
+  gem 'libnotify'
 end
 
 # Gems used only for assets and not required
