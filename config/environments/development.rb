@@ -34,4 +34,6 @@ Impact::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:fb9ca69f07d44b7377537ed0b485aae6@panga.redistogo.com:9399/'
 end

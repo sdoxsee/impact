@@ -14,6 +14,6 @@ class Person < ActiveRecord::Base
   end
   
   def position
-    1
+    
   end
 end
