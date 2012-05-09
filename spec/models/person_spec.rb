@@ -46,18 +46,5 @@ describe Person do
       @jenn.subscribed_descendants.count.should eql(1)
     end
   end
-  describe "position" do
-    it "should have stephen as first" do
-      @stephen.position.should eql(1)
-    end
-    pending "should have lois as second" do
-      
-    end
-    pending "should have karen as tied for third with jenn" do
-      
-    end
-    pending "should have alex, harry, and joann as tied for fifth" do
-      
-    end
-  end
+#   testing rank is really part of the leaderboard gem
 end

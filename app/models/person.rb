@@ -13,7 +13,13 @@ class Person < ActiveRecord::Base
     subscribed
   end
   
-  def position
-    
+  def rank
+    send_rank
   end
+  
+  private
+    
+    def send_rank
+      HIGHSCORE_LB.rank_for(self.id)      
+    end
 end

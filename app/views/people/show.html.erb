@@ -22,7 +22,12 @@
 
 <p>
   <b>Impact:</b>
-  <%= @person.descendants.count unless @person.descendants == nil %>
+  <%= @person.subscribed_descendants.count unless @person.descendants == nil %>
+</p>
+
+<p>
+  <b>Rank:</b>
+  <%= @person.rank %>
 </p>
 
 

@@ -34,4 +34,6 @@ Impact::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:fb9ca69f07d44b7377537ed0b485aae6@panga.redistogo.com:9399/'
 end

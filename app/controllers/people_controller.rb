@@ -1,8 +1,10 @@
 class PeopleController < ApplicationController
+  after_filter :rebuild_scores, :only => [:create, :update, :destroy]
+
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.all.sort_by!{|p| HIGHSCORE_LB.rank_for(p.id)}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -72,7 +74,7 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   def destroy
-    @person = Person.find(params[:id])
+    @person = Person.find(params[:person][:id])
     @person.destroy
 
     respond_to do |format|
@@ -80,4 +82,16 @@ class PeopleController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+    def rebuild_scores
+# when change to person (unsubscribe, new added, etc.)
+#   update score for all above
+      # @person = Person.find(params[:id])
+      Person.all.each do |a|
+        HIGHSCORE_LB.rank_member(a.id, a.subscribed_descendants.count)
+      end
+    end
+    
 end

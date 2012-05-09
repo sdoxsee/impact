@@ -2,11 +2,12 @@
 
 <table>
   <tr>
+    <th>Rank</th>
+    <th>Impact</th>
     <th>Name</th>
     <th>Age</th>
     <th>Status</th>
     <th>Parent</th>
-    <th>Impact</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +15,12 @@
 
 <% @people.each do |person| %>
   <tr>
+    <td><%= person.rank %></td>
+    <td><%= person.subscribed_descendants.count unless person.descendants == nil %></td>
     <td><%= person.name %></td>
     <td><%= person.age %></td>
     <td><%= person.status %></td>
     <td><%= person.parent.name unless person.parent == nil %></td>
-    <td><%= person.descendants.count unless person.descendants == nil %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %></td>
