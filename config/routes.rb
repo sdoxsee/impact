@@ -1,4 +1,8 @@
 Impact::Application.routes.draw do
+  get "static_pages/home"
+
+  get "static_pages/help"
+
   resources :people
   
   root :to => 'people#index'
