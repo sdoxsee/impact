@@ -6,9 +6,9 @@ class Person < ActiveRecord::Base
   validates_presence_of :status
   validates_uniqueness_of :name
   
-  def subscribed_descendants
+  def impact
     subscribed = []
-    self.descendants.each do |d|
+    self.self_and_descendants.each do |d|
       subscribed << d if d.status == 'subscribed'        
     end
     subscribed

@@ -90,7 +90,7 @@ class PeopleController < ApplicationController
 #   update score for all above
       # @person = Person.find(params[:id])
       Person.all.each do |a|
-        HIGHSCORE_LB.rank_member(a.id, a.subscribed_descendants.count)
+        HIGHSCORE_LB.rank_member(a.id, a.impact.count)
       end
     end
     

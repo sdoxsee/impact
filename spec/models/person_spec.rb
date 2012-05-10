@@ -41,9 +41,9 @@ describe Person do
       @jenn.descendants.count.should eql(1)
       @joann.descendants.count.should eql(0)
     end
-    it "should have 0 subscribed descendants" do
-      @stephen.subscribed_descendants.count.should eql(2)
-      @jenn.subscribed_descendants.count.should eql(1)
+    it "should have impact" do
+      @stephen.impact.count.should eql(3)
+      @jenn.impact.count.should eql(1) # her + joann, but only joann subscribed
     end
   end
 #   testing rank is really part of the leaderboard gem

@@ -19,12 +19,12 @@
 <% @people.each do |person| %>
   <tr>
     <td><%= person.rank %></td>
-    <td><%= person.subscribed_descendants.count unless person.descendants == nil %></td>
+    <td><%= person.impact.count unless person.leaf? == false %></td>
     <td><%= person.name %></td>
     <td><%= person.age %></td>
     <td><%= person.country %></td>
     <td><%= person.status %></td>
-    <td><%= person.parent.name unless person.parent == nil %></td>
+    <td><%= person.parent.name unless person.root? == true %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %></td>
