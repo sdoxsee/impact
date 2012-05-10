@@ -1,4 +1,39 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Impact Stats</h1>
-<p>
-  This is the home page for Impact Stats.
-</p>
+
+<h2>Impact Leaderboard</h2>
+
+<table>
+  <tr>
+    <th>Impact #</th>
+    <th>Name</th>
+  </tr>
+
+<% @impact.each do |person| %>
+  <tr>
+    <td><%= person.impact.count %></td>
+    <td><%= person.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<h2>Country Leaderboard</h2>
+
+<table>
+  <tr>
+    <th># of Countries</th>
+    <th>Name</th>
+  </tr>
+
+<% @countries.each do |person| %>
+  <tr>
+    <td><%= person.countries.count %></td>
+    <td><%= person.name %></td>
+  </tr>
+<% end %>
+</table>
+
+

@@ -19,7 +19,7 @@
 <% @people.each do |person| %>
   <tr>
     <td><%= person.rank %></td>
-    <td><%= person.impact.count unless person.leaf? == false %></td>
+    <td><%= person.impact.count %></td>
     <td><%= person.name %></td>
     <td><%= person.age %></td>
     <td><%= person.country %></td>

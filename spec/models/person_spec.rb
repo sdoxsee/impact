@@ -14,9 +14,9 @@ describe Person do
 # \
 # alex (s)
       @stephen = FactoryGirl.create(:person, :status => 'subscribed')
-      @lois = FactoryGirl.create(:person)
+      @lois = FactoryGirl.create(:person, :country => 'France')
       @lois.move_to_child_of(@stephen)
-      @karen = FactoryGirl.create(:person, :status => 'subscribed')
+      @karen = FactoryGirl.create(:person, :country => 'New Zealand', :status => 'subscribed')
       @karen.move_to_child_of(@lois)
       @alex = FactoryGirl.create(:person, :status => 'subscribed')
       @alex.move_to_child_of(@karen)
@@ -44,6 +44,18 @@ describe Person do
     it "should have impact" do
       @stephen.impact.count.should eql(3)
       @jenn.impact.count.should eql(1) # her + joann, but only joann subscribed
+    end
+  end
+  
+  describe "countries" do
+    it "should have count with duplicates removed" do
+      @stephen.countries.count.should eql(2) # Canada, NZ, removed France because unsubscribed
+    end
+  end
+  describe "referrals" do
+    it "should have count invitations" do
+      4.times {@stephen.invitations << Invitation.new}
+      @stephen.invitations.count.should eql(4)
     end
   end
 #   testing rank is really part of the leaderboard gem

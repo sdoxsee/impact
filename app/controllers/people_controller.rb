@@ -91,6 +91,7 @@ class PeopleController < ApplicationController
       # @person = Person.find(params[:id])
       Person.all.each do |a|
         HIGHSCORE_LB.rank_member(a.id, a.impact.count)
+        COUNTRY_LB.rank_member(a.id, a.countries.count)
       end
     end
     
