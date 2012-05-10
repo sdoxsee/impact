@@ -16,6 +16,7 @@ end
 gem 'awesome_nested_set'
 gem 'simple_form'
 gem 'leaderboard'
+gem 'country-select'
 
 group :test do
   gem 'factory_girl_rails'

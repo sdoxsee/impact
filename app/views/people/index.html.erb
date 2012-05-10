@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Listing people</h1>
 
 <table>
@@ -6,6 +8,7 @@
     <th>Impact</th>
     <th>Name</th>
     <th>Age</th>
+    <th>Country</th>
     <th>Status</th>
     <th>Parent</th>
     <th></th>
@@ -19,6 +22,7 @@
     <td><%= person.subscribed_descendants.count unless person.descendants == nil %></td>
     <td><%= person.name %></td>
     <td><%= person.age %></td>
+    <td><%= person.country %></td>
     <td><%= person.status %></td>
     <td><%= person.parent.name unless person.parent == nil %></td>
     <td><%= link_to 'Show', person %></td>
